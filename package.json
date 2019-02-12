@@ -1,6 +1,6 @@
 {
   "name": "nativescript-vue-global-drawer",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "A Vue plugin that bootstrap the integration of RadSideDrawer in your NativeScript-Vue project.",
   "main": "src/index.js",
   "scripts": {
@@ -24,5 +24,15 @@
   "dependencies": {
     "nativescript-ui-sidedrawer": "^5.1.0",
     "nativescript-vue": "^2.0.2"
+  },
+  "nativescript": {
+    "platforms": {
+      "android": "4.2.0",
+      "ios": "4.2.0"
+    },
+    "plugin": {
+      "vue": "true",
+      "category": "Developer"
+    }
   }
 }
