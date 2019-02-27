@@ -1,6 +1,5 @@
 import NSVueGlobalDrawer from './components/GlobalDrawer'
 import drawerMethods from './methods/drawerMethods'
-import navigationMethods from './methods/navigationMethods'
 
 const NSVueGlobalDrawerPlugin = {
     install(Vue) {
@@ -9,8 +8,7 @@ const NSVueGlobalDrawerPlugin = {
         Vue.component('GlobalDrawer', NSVueGlobalDrawer)
 
         Vue.prototype.$drawer = {
-            ...drawerMethods,
-            ...navigationMethods
+            ...drawerMethods
         }
     }
 }

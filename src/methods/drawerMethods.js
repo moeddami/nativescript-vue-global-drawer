@@ -1,25 +1,26 @@
-import {getDrawer, setDrawerStatus} from './utils'
+import {getDrawerNativeView, getDrawerStatus, setDrawerStatus, WARNING_MSG} from './utils'
+import Vue from 'nativescript-vue'
 
 const open = () => {
-    const drawer = getDrawer()
+    const drawer = getDrawerNativeView()
     if (drawer)
         drawer.showDrawer()
 }
 
 const close = () => {
-    const drawer = getDrawer()
+    const drawer = getDrawerNativeView()
     if (drawer)
         drawer.closeDrawer()
 }
 
 const toggle = () => {
-    const drawer = getDrawer()
+    const drawer = getDrawerNativeView()
     if (drawer)
         drawer.toggleDrawerState()
 }
 
 const isOpen = () => {
-    const drawer = getDrawer()
+    const drawer = getDrawerNativeView()
     if (drawer)
         return drawer.getIsOpen()
     return false
@@ -27,20 +28,39 @@ const isOpen = () => {
 
 const enable = () => {
     setDrawerStatus(true)
-    const drawer = getDrawer()
 }
 
 const disable = () => {
-    const drawer = getDrawer()
+    const drawer = getDrawerNativeView()
     if (drawer)
         drawer.gesturesEnabled = false
     setDrawerStatus(false)
 }
 
 const setGestures = (value) => {
-    const drawer = getDrawer()
+    const drawer = getDrawerNativeView()
     if (drawer)
         drawer.gesturesEnabled = value
+}
+
+const getStatus = () => {
+    return getDrawerStatus()
+}
+
+const getDrawer = () => {
+    if (Vue.prototype.$nsVueGlobalDrawer == undefined) {
+        console.log(WARNING_MSG)
+        return
+    }
+    return Vue.prototype.$nsVueGlobalDrawer.drawer
+}
+
+const getFrame = () => {
+    if (Vue.prototype.$nsVueGlobalDrawer == undefined) {
+        console.log(WARNING_MSG)
+        return
+    }
+    return Vue.prototype.$nsVueGlobalDrawer.frame
 }
 
 export default {
@@ -50,5 +70,8 @@ export default {
     isOpen,
     enable,
     disable,
-    setGestures
+    setGestures,
+    getStatus,
+    getDrawer,
+    getFrame
 }

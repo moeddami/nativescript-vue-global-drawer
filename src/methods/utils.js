@@ -1,29 +1,22 @@
 import Vue from 'nativescript-vue'
 
-export const getDrawer = () => {
+export const WARNING_MSG = 'The drawer is unavailable at the moment. Please add it to you App.vue'
+
+export const getDrawerNativeView = () => {
     if (Vue.prototype.$nsVueGlobalDrawer == undefined) {
-        console.log('The drawer is unavailable at the moment. Please add it to you App.vue')
+        console.log(WARNING_MSG)
         return
     }
     if (!Vue.prototype.$nsVueGlobalDrawer.enabled) {
-        console.log('The drawer is disabled.')
+        console.log(WARNING_MSG)
         return
     }
     return Vue.prototype.$nsVueGlobalDrawer.drawer.nativeView
 }
 
-export const getFrame = () => {
-    if (Vue.prototype.$nsVueGlobalDrawer == undefined) {
-        console.log('The drawer is unavailable at the moment. Please add it to you App.vue')
-        return
-    }
-    return Vue.prototype.$nsVueGlobalDrawer.frame.nativeView
-}
-
-
 export const getDrawerStatus = () => {
     if (Vue.prototype.$nsVueGlobalDrawer == undefined) {
-        console.log('The drawer is unavailable at the moment. Please add it to you App.vue')
+        console.log(WARNING_MSG)
         return
     }
     return Vue.prototype.$nsVueGlobalDrawer.enabled
@@ -31,7 +24,7 @@ export const getDrawerStatus = () => {
 
 export const setDrawerStatus = (status) => {
     if (Vue.prototype.$nsVueGlobalDrawer == undefined) {
-        console.log('The drawer is unavailable at the moment. Please add it to you App.vue')
+        console.log(WARNING_MSG)
         return
     }
     Vue.prototype.$nsVueGlobalDrawer.enabled = status

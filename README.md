@@ -1,6 +1,9 @@
+[![NPM](https://nodei.co/npm/nativescript-vue-global-drawer.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/nativescript-vue-global-drawer/)
+
+[![npm version](https://badge.fury.io/js/nativescript-vue-global-drawer.svg)](https://badge.fury.io/js/nativescript-vue-global-drawer)
 ## NativeScript-Vue Global Drawer
 
-A Vue plugin that bootstrap the integration of RadSideDrawer in your NativeScript-Vue project.
+A Vue.js plugin that bootstrap the integration of RadSideDrawer in your NativeScript-Vue project.
 
 Declare your drawer once and access it everywhere through your components.
 
@@ -29,7 +32,7 @@ new Vue({
 }).$start()
 ````
 
-In App.vue, declare the global grawer.
+In App.vue, declare the global drawer.
 
 ````
 <template>
@@ -63,7 +66,7 @@ In App.vue, declare the global grawer.
 
 Anywhere in your components you can call these methods to control the drawer behavior.
 
-.$drawer.open()
+.$drawer.open() : void
 
 > Open drawer.
 
@@ -71,7 +74,7 @@ Anywhere in your components you can call these methods to control the drawer beh
 <Button @tap="$drawer.open()">Show</Button>
 ````
 
-.$drawer.close()
+.$drawer.close() : void
 
 > Close drawer.
 
@@ -79,7 +82,7 @@ Anywhere in your components you can call these methods to control the drawer beh
 <Button @tap="$drawer.close()">Close</Button>
 ````
 
-.$drawer.toggle()
+.$drawer.toggle() : void
 
 > Toggle drawer.
 
@@ -87,7 +90,7 @@ Anywhere in your components you can call these methods to control the drawer beh
 <Button @tap="$drawer.toggle()">Toggle</Button>
 ````
 
-.$drawer.enable()
+.$drawer.enable() : void
 
 > Enable enable.
 
@@ -95,7 +98,7 @@ Anywhere in your components you can call these methods to control the drawer beh
 <Button @tap="$drawer.enable()">Enable</Button>
 ````
 
-.$drawer.disable()
+.$drawer.disable() : void
 
 > Disable drawer. This will disable gestures too.
 
@@ -103,7 +106,7 @@ Anywhere in your components you can call these methods to control the drawer beh
 <Button @tap="$drawer.disable()">Disable</Button>
 ````
 
-.$drawer.setGestures(boolean)
+.$drawer.setGestures(boolean) : void
 
 > Enable/Disable gestures.
 
@@ -111,35 +114,46 @@ Anywhere in your components you can call these methods to control the drawer beh
 <Button @tap="$drawer.setGestures(true)">Enable Gestures</Button>
 ````
 
-#### Navigation methods
+.$drawer.getDrawer()
 
-To control the navigation inside the drawer, call these methods anywhere in your components.
+> Get drawer instance.
 
-.$drawer.navigateTo(component, options)
-> Navigate to a page.
+.$drawer.getFrame()
 
->options: Same as [manual navigation](https://nativescript-vue.org/en/docs/routing/manual-routing/) plus closeDrawer property to close the drawer after navigating (default: false).
+> Get drawer frame instance.
+
+.$drawer.getStatus() : boolean
+
+> Get drawer status (enabled/disabled).
+
+#### Navigation
+
+To navigate inside the drawer, you have to get the drawer frame instance to use in [manual navigation](https://nativescript-vue.org/en/docs/routing/manual-routing/).
+
+Example:
+
 ````
-this.$drawer.navigateTo(Page1, {
-    closeDrawer: true,
+this.$navigateTo(Page1, {
     transition: {},
     transitionIOS: {},
     transitionAndroid: {},
     
     props: {
       foo: 'bar',
-    }
+    },
+    frame: this.$drawer.getFrame()
 })
 ````
 
+#### Events
 
-.$drawer.navigateBack()
-
-> Navigate to previous page.
-
-````
-this.$drawer.navigateBack()
-````
+|Event Name     |Description|
+|---------|-----------|
+|drawerOpened  |the drawer has been opened.
+|drawerOpening |the drawer is about to open.
+|drawerClosed  |the drawer has been closed.
+|drawerClosing |the drawer is about to close.
+|drawerPan     |the drawer is being opened by its edge gesture.
 
 ## Contributing
 
