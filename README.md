@@ -11,9 +11,9 @@ If you need one drawer over your App pages this for you.
 
 ## Install
 
-No need to install RadSideDrawer, the plugin will do it for you ;)
 
 ```
+npm install nativescript-ui-sidedrawer --save
 npm install nativescript-vue-global-drawer --save
 ```
 
