@@ -31,9 +31,9 @@
       "category": "Developer"
     }
   },
-  "dependencies": {
-    "nativescript-ui-sidedrawer": "^9.0.3",
-    "nativescript-vue": "^2.8.3"
+  "peerDependencies": {
+    "nativescript-vue": "^2.8.3",
+    "nativescript-ui-sidedrawer": "^9.0.3"
   },
   "devDependencies": {
     "@nativescript/core": "~7.1.0",
